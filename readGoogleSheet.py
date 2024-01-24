@@ -9,9 +9,11 @@ sheet = service.spreadsheets()
 SPREADSHEET_ID = '17ozqiGHk8nJTv6P_NE50sZsLK9y7qBIHHAOI3n7HX50'
 RANGE_NAME = "'Rotary Clubs - Africa V2'!A253:H512"
 
+
 # Function to get values from specified columns
 def get_column_values(values, column_index):
     return [row[column_index] if len(row) > column_index else None for row in values]
+
 
 # Function to create a new sheet
 def create_new_sheet(service, spreadsheet_id, sheet_name):
@@ -28,6 +30,7 @@ def create_new_sheet(service, spreadsheet_id, sheet_name):
     }
     service.spreadsheets().batchUpdate(spreadsheetId=spreadsheet_id, body=new_sheet_body).execute()
 
+
 # Function to add titles to a new sheet
 def add_titles_to_sheet(service, spreadsheet_id, sheet_name, titles):
     value_range = f'{sheet_name}!A1:{chr(65 + len(titles) - 1)}1'
@@ -37,6 +40,7 @@ def add_titles_to_sheet(service, spreadsheet_id, sheet_name, titles):
         body={'values': [titles]},
         valueInputOption='RAW'
     ).execute()
+
 
 # Function to add values to a specified column in a sheet
 def add_values_to_sheet_column(service, spreadsheet_id, sheet_name, column_values, column_letter):
@@ -49,6 +53,7 @@ def add_values_to_sheet_column(service, spreadsheet_id, sheet_name, column_value
         body={'values': [[value] for value in column_values]},
         valueInputOption='RAW'
     ).execute()
+
 
 # Main logic
 

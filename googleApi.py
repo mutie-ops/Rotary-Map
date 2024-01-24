@@ -2,7 +2,7 @@ import requests
 
 
 def get_location(search):
-    api_key = 'AIzaSyAhI0i1KBGZgVvtmtz19t1tLU4nTc22uiM'
+    api_key = 'your google maps api key'
     url = f'https://maps.googleapis.com/maps/api/geocode/json?address={search}&key={api_key}'
 
     response = requests.get(url)
